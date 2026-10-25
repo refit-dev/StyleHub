@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY as string
 const stripe = new Stripe(stripeSecretKey, {
-  apiVersion: '2025-07-30.basil',
+  apiVersion: '2026-09-30.endive',
 })
 
 async function createPaymentIntent({
@@ -88,7 +88,7 @@ async function createCheckoutSession({
   const line_items = buildLineItems(cartItems);
 
   const sessionData: Stripe.Checkout.SessionCreateParams = {
-    payment_method_types: ['card'],
+    allowed_payment_method_types: ['card'],
     line_items,
     mode: 'payment',
     customer_email: email,
